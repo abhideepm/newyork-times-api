@@ -4,7 +4,6 @@ document.body.appendChild(main)
 
 let container = document.createElement('div')
 container.classList.add('container-fluid')
-container.id = 'parent'
 main.appendChild(container)
 
 let titlerow = document.createElement('div')
@@ -12,12 +11,31 @@ titlerow.classList.add('row')
 container.appendChild(titlerow)
 
 let papertitle = document.createElement('div')
-papertitle.classList.add('col', 'h1', 'text-center', 'title', 'cursor')
+papertitle.classList.add('col-12', 'h1', 'text-center', 'title', 'cursor')
 papertitle.innerHTML = 'THE PERTINENT TIMES'
 papertitle.addEventListener('click', () => {
 	generateContent()
 })
 titlerow.appendChild(papertitle)
+
+let minimizerow = document.createElement('div')
+minimizerow.classList.add('col-12', 'h1', 'text-center', 'title', 'cursor')
+container.appendChild(minimizerow)
+
+let minimize = document.createElement('a')
+minimize.classList.add('col-12')
+minimizerow.appendChild(minimize)
+
+let span = document.createElement('span')
+span.classList.add('material-icons')
+span.innerHTML = 'expand_more'
+span.setAttribute('data-target', '#section')
+span.setAttribute('data-toggle', 'collapse')
+span.addEventListener('click', () => {
+	if (span.innerHTML === 'expand_less') span.innerHTML = 'expand_more'
+	else span.innerHTML = 'expand_less'
+})
+minimize.appendChild(span)
 
 let sections = [
 	'Home',
@@ -29,14 +47,19 @@ let sections = [
 	'Health',
 	'Sports',
 	'Arts',
-	'Books',
+	'Fashion',
 	'Food',
 	'Travel',
 ]
 
 let sectionrow = document.createElement('div')
-sectionrow.classList.add('row', 'border-top', 'border-bottom', 'py-3', 'mb-3')
+sectionrow.classList.add('collapse')
+sectionrow.id = 'section'
 container.appendChild(sectionrow)
+
+let sectionrow1 = document.createElement('div')
+sectionrow1.classList.add('row', 'border-top', 'border-bottom', 'py-3', 'mb-3')
+sectionrow.appendChild(sectionrow1)
 
 for (let sec of sections) {
 	let sectioncol = document.createElement('button')
@@ -61,16 +84,12 @@ for (let sec of sections) {
 		sectioncol.classList.remove('bg-dark', 'text-white')
 	})
 
-	sectioncol.setAttribute('data-parent', '#parent')
-	sectioncol.setAttribute('data-toggle', 'collapse')
-	sectioncol.setAttribute('data-target', '#content')
-
-	sectionrow.appendChild(sectioncol)
+	sectionrow1.appendChild(sectioncol)
 }
 
 let content = document.createElement('div')
-content.classList.add('row', 'collapse-show')
-content.id = 'content'
+content.classList.add('row')
+// content.id = 'content'
 container.appendChild(content)
 
 async function generateContent(section = 'home') {
