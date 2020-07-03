@@ -20,6 +20,12 @@ titlerow.appendChild(papertitle)
 
 let minimizerow = document.createElement('div')
 minimizerow.classList.add('col-12', 'h1', 'text-center', 'title', 'cursor')
+minimizerow.addEventListener('click', () => {
+	if (span.innerHTML === 'expand_less') span.innerHTML = 'expand_more'
+	else span.innerHTML = 'expand_less'
+})
+minimizerow.setAttribute('data-target', '#section')
+minimizerow.setAttribute('data-toggle', 'collapse')
 container.appendChild(minimizerow)
 
 let minimize = document.createElement('a')
@@ -29,12 +35,6 @@ minimizerow.appendChild(minimize)
 let span = document.createElement('span')
 span.classList.add('material-icons')
 span.innerHTML = 'expand_more'
-span.setAttribute('data-target', '#section')
-span.setAttribute('data-toggle', 'collapse')
-span.addEventListener('click', () => {
-	if (span.innerHTML === 'expand_less') span.innerHTML = 'expand_more'
-	else span.innerHTML = 'expand_less'
-})
 minimize.appendChild(span)
 
 let sections = [
