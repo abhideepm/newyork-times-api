@@ -10,23 +10,23 @@ let titlerow = document.createElement('div')
 titlerow.classList.add('row')
 container.appendChild(titlerow)
 
-let sidebar = document.createElement('a')
-sidebar.classList.add('col-1', 'cursor', 'align-self-center', 'text-dark')
-sidebar.innerHTML = `<span class="material-icons">menu</span>`
-sidebar.setAttribute('data-toggle', 'collapse')
-sidebar.href = '#sidebar'
-titlerow.appendChild(sidebar)
+// let sidebar = document.createElement('a')
+// sidebar.classList.add('col-1', 'cursor', 'align-self-center', 'text-dark')
+// sidebar.innerHTML = `<span class="material-icons">menu</span>`
+// sidebar.setAttribute('data-toggle', 'collapse')
+// sidebar.href = '#sidebar'
+// titlerow.appendChild(sidebar)
 
-let sidebarcontent = document.createElement('div')
-sidebarcontent.classList.add('collapse')
-sidebarcontent.innerHTML = 'abc'
-sidebarcontent.id = 'sidebar'
-main.appendChild(sidebarcontent)
+// let sidebarcontent = document.createElement('div')
+// sidebarcontent.classList.add('collapse')
+// sidebarcontent.innerHTML = 'abc'
+// sidebarcontent.id = 'sidebar'
+// document.body.appendChild(sidebarcontent)
 
 let papertitle = document.createElement('div')
 papertitle.classList.add(
-	'offset-1',
-	'col-8',
+	// 'offset-1',
+	'col',
 	'h1',
 	'text-center',
 	'title',
@@ -39,6 +39,7 @@ papertitle.addEventListener('click', () => {
 titlerow.appendChild(papertitle)
 
 let sections = [
+	'Home',
 	'World',
 	'Politics',
 	'Business',
@@ -50,7 +51,6 @@ let sections = [
 	'Books',
 	'Food',
 	'Travel',
-	'Magazine',
 ]
 
 let sectionrow = document.createElement('div')
@@ -58,14 +58,15 @@ sectionrow.classList.add('row', 'border-top', 'border-bottom', 'py-3', 'mb-3')
 container.appendChild(sectionrow)
 
 for (let sec of sections) {
-	let sectioncol = document.createElement('div')
+	let sectioncol = document.createElement('button')
 	sectioncol.classList.add(
 		'col-lg-1',
 		'col-md-3',
 		'col-sm-6',
 		'text-center',
 		'cursor',
-		'p-0'
+		'p-0',
+		'btn'
 	)
 	sectioncol.innerHTML = sec.toUpperCase()
 	sectioncol.addEventListener('click', () => {
@@ -77,11 +78,14 @@ for (let sec of sections) {
 	sectioncol.addEventListener('mouseout', () => {
 		sectioncol.classList.remove('bg-dark', 'text-white')
 	})
+	sectionrow.setAttribute('data-toggle', 'collapse')
+	sectionrow.setAttribute('data-target', '#content')
 	sectionrow.appendChild(sectioncol)
 }
 
 let content = document.createElement('div')
-content.classList.add('row')
+content.classList.add('row', 'collapse')
+content.id = 'content'
 container.appendChild(content)
 
 async function generateContent(section = 'home') {
@@ -100,7 +104,7 @@ async function generateContent(section = 'home') {
 		colcard.appendChild(card)
 
 		let cardcontainer = document.createElement('div')
-		cardcontainer.classList.add('container-fluid', 'mb-3')
+		cardcontainer.classList.add('container-fluid')
 		card.appendChild(cardcontainer)
 
 		let cardrowmain = document.createElement('div')
@@ -116,7 +120,7 @@ async function generateContent(section = 'home') {
 		cardcolmain1.appendChild(cardcol1container)
 
 		let cardcol1row1 = document.createElement('div')
-		cardcol1row1.classList.add('row', 'mt-4')
+		cardcol1row1.classList.add('row', 'mt-3')
 		cardcol1container.appendChild(cardcol1row1)
 
 		let cardcol1col1 = document.createElement('div')
@@ -124,7 +128,7 @@ async function generateContent(section = 'home') {
 		cardcol1row1.appendChild(cardcol1col1)
 
 		let sectioncard = document.createElement('div')
-		sectioncard.classList.add('text-primary', 'font-weight-bold')
+		sectioncard.classList.add('text-primary', 'font-weight-bold', 'h5')
 		sectioncard.innerHTML = data[k].section.toUpperCase()
 		cardcol1col1.appendChild(sectioncard)
 
@@ -191,7 +195,7 @@ async function generateContent(section = 'home') {
 		cardcol1container.appendChild(cardcol1row5)
 
 		let cardcol1col5 = document.createElement('div')
-		cardcol1col5.classList.add('col')
+		cardcol1col5.classList.add('col', 'mb-3')
 		cardcol1row5.appendChild(cardcol1col5)
 
 		let continuecard = document.createElement('a')
