@@ -21,7 +21,7 @@ let sidebarcontent = document.createElement('div')
 sidebarcontent.classList.add('collapse')
 sidebarcontent.innerHTML = 'abc'
 sidebarcontent.id = 'sidebar'
-titlerow.appendChild(sidebarcontent)
+main.appendChild(sidebarcontent)
 
 let papertitle = document.createElement('div')
 papertitle.classList.add(
@@ -64,7 +64,8 @@ for (let sec of sections) {
 		'col-md-3',
 		'col-sm-6',
 		'text-center',
-		'cursor'
+		'cursor',
+		'p-0'
 	)
 	sectioncol.innerHTML = sec.toUpperCase()
 	sectioncol.addEventListener('click', () => {
@@ -103,7 +104,7 @@ async function generateContent(section = 'home') {
 		card.appendChild(cardcontainer)
 
 		let cardrowmain = document.createElement('div')
-		cardrowmain.classList.add('row')
+		cardrowmain.classList.add('row', 'p-0')
 		cardcontainer.appendChild(cardrowmain)
 
 		let cardcolmain1 = document.createElement('div')
@@ -200,17 +201,11 @@ async function generateContent(section = 'home') {
 		cardcol1col5.appendChild(continuecard)
 
 		let cardcolmain2 = document.createElement('div')
-		cardcolmain2.classList.add(
-			'col-4',
-			'd-flex',
-			'p-0',
-			'align-items-center',
-			'justify-content-center'
-		)
+		cardcolmain2.classList.add('col-4', 'p-0')
 		cardrowmain.appendChild(cardcolmain2)
 
 		let thumbnail = document.createElement('img')
-		thumbnail.classList.add('w-75', 'h-100', 'overflow-hidden', 'p-0')
+		thumbnail.classList.add('w-100', 'h-100', 'overflow-hidden', 'p-0')
 		thumbnail.src = data[k].multimedia.slice(-1)[0].url
 		cardcolmain2.appendChild(thumbnail)
 	}
