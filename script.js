@@ -123,12 +123,7 @@ async function generateContent(section = 'home') {
 			cardcontainer.appendChild(cardrowmain)
 
 			let cardcolmain1 = document.createElement('div')
-			cardcolmain1.classList.add(
-				'col-lg-8',
-				'col-md-8',
-				'col-sm-12',
-				'p-0'
-			)
+			cardcolmain1.classList.add('col-lg-8', 'col-md-8', 'col-sm-12', 'p-0')
 			cardrowmain.appendChild(cardcolmain1)
 
 			let cardcol1container = document.createElement('div')
@@ -190,8 +185,7 @@ async function generateContent(section = 'home') {
 			let pubdate = new Date(yy, mm - 1, dd)
 			let datecard = document.createElement('div')
 			datecard.classList.add('text-muted')
-			datecard.innerHTML =
-				months[pubdate.getMonth()] + ' ' + pubdate.getDate()
+			datecard.innerHTML = months[pubdate.getMonth()] + ' ' + pubdate.getDate()
 			cardcol1col3.appendChild(datecard)
 
 			let cardcol1row4 = document.createElement('div')
@@ -221,12 +215,7 @@ async function generateContent(section = 'home') {
 			cardcol1col5.appendChild(continuecard)
 
 			let cardcolmain2 = document.createElement('div')
-			cardcolmain2.classList.add(
-				'col-lg-4',
-				'col-md-4',
-				'col-sm-12',
-				'p-0'
-			)
+			cardcolmain2.classList.add('col-lg-4', 'col-md-4', 'col-sm-12', 'p-0')
 			cardrowmain.appendChild(cardcolmain2)
 
 			let thumbnail = document.createElement('img')
@@ -235,7 +224,7 @@ async function generateContent(section = 'home') {
 			cardcolmain2.appendChild(thumbnail)
 		}
 	} catch (err) {
-		alert(err)
+		console.log(err)
 	}
 }
 
